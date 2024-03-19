@@ -1,0 +1,32 @@
+:root {
+	--font-family-montserrat: "Montserrat";
+	--font-family-poppins: "Poppins";
+	--font-family-roboto: "Roboto";
+	--font-family-avgard2: "AVGARDD2";
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 14px;
+	font-weight: 400;
+	font-family: var(--font-family-montserrat);
+	min-width: 320px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a,
+button {
+	cursor: pointer;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}

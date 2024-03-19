@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
+
 import { RootLayout } from "./components/layout/RootLayout";
 
 import "./styles/reset.css";
@@ -10,6 +12,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<RootLayout />
+		<BrowserRouter>
+			<RootLayout />
+		</BrowserRouter>
 	</React.StrictMode>
 );
