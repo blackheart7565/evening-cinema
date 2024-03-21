@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, useLocation } from "react-router-dom";
 
-import { displayRoutes } from "../../utils/common";
+import { displayRoutes } from "../../utils/displayRoutes";
 import { layoutPaths } from "../../utils/layoutPaths";
 
 interface IRootLayoutProps { }

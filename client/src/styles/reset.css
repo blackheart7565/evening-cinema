@@ -125,7 +125,7 @@ body {
    Приводим к единому цвету svg-элементы
   */
 svg *[fill] {
-	fill: currentColor
+	/* fill: currentColor */
 }
 
 svg *[stroke] {

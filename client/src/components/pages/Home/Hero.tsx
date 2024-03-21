@@ -3,6 +3,9 @@ import React, { useRef, useState } from "react";
 import { Autoplay, FreeMode, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from "swiper/react";
 
+import { convertMinuteToMinuteAndHour } from "../../../utils/common";
+import { CircleRating } from "../../element/CircleRating/CircleRating";
+
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
@@ -13,18 +16,6 @@ interface IHeroProps { }
 const pathNew = "/bg";
 const pathPoster = "/img";
 
-const img = [
-	"https://swiperjs.com/demos/images/nature-1.jpg",
-	"https://swiperjs.com/demos/images/nature-2.jpg",
-	"https://swiperjs.com/demos/images/nature-3.jpg",
-	"https://swiperjs.com/demos/images/nature-4.jpg",
-	"https://swiperjs.com/demos/images/nature-5.jpg",
-	"https://swiperjs.com/demos/images/nature-6.jpg",
-	"https://swiperjs.com/demos/images/nature-7.jpg",
-	"https://swiperjs.com/demos/images/nature-8.jpg",
-	"https://swiperjs.com/demos/images/nature-9.jpg",
-	"https://swiperjs.com/demos/images/nature-10.jpg"
-];
 const postersImg = [
 	`${pathNew}/1.jpg`,
 	`${pathNew}/2.jpg`,
@@ -51,15 +42,16 @@ const newImg = [
 ];
 
 export const Hero: React.FC<IHeroProps> = () => {
-	const autoplaySwiperDelay: number = 2500;
+	const autoplaySwiperDelay: number = 25_00_000;
 	const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
-	const [mediaInfo, setMediaInfo] = useState({
+	const mediaInfo = {
 		name: "Поднятие уровня в одиночку",
-		year: "2024",
+		release: "2024",
 		rating: 9.1,
-		time: 81,
+		duration: 81,
 		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis iste modi ipsam sed sunt qui distinctio. Dicta facere praesentium, ab quaerat maiores, nam vitae ipsa vel velit molestiae accusantium dolorem!",
-	});
+	};
+	const { minute, hour } = convertMinuteToMinuteAndHour(mediaInfo.duration);
 	const swiperNewRef = useRef<SwiperRef | null>(null);
 
 	const onSlideChange = () => {
@@ -103,12 +95,39 @@ export const Hero: React.FC<IHeroProps> = () => {
 				))}
 			</Swiper>
 			<div className="home__hero-wrapper">
+
+				<div className="home__hero-content">
+					<h1 className="home__hero-name">{mediaInfo.name}</h1>
+					<div className="home__hero-details">
+						<div className="home__hero-release">{mediaInfo.release}</div>
+						<span></span>
+						<div className="home__hero-duration">
+							<span>{hour}h</span>
+							<span>{minute}m</span>
+						</div>
+						<span></span>
+						<div className="home__hero-rating">
+							<CircleRating size={45} value={mediaInfo.rating * 10} isRound={true} />
+							<span className="home__hero-rating-number">{mediaInfo.rating}</span>
+						</div>
+					</div>
+					<p className="home__hero-description">{mediaInfo.description}</p>
+				</div>
+
 				<div className="home__hero-inner">
 					<Swiper
 						ref={swiperNewRef}
 						spaceBetween={10}
-						slidesPerView={4}
 						freeMode={true}
+						slidesPerView={2}
+						breakpoints={{
+							660: {
+								slidesPerView: 4,
+							},
+							480: {
+								slidesPerView: 3,
+							}
+						}}
 						watchSlidesProgress={true}
 						modules={[FreeMode, Thumbs, Autoplay]}
 						controller={thumbsSwiper ? { control: thumbsSwiper } : undefined}

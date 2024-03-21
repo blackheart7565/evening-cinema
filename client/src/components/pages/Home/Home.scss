@@ -6,6 +6,7 @@
 		width: 100%;
 		height: 100vh;
 		position: relative;
+		transition: all 0.3s ease-in-out;
 
 		&-swiper-poster,
 		&-swiper-new {
@@ -79,7 +80,8 @@
 		&-wrapper {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: space-around;
+			flex-wrap: wrap;
 			position: absolute;
 			top: 50%;
 			left: 0%;
@@ -87,15 +89,117 @@
 			z-index: 1;
 			width: 100%;
 			height: 100%;
+			padding: 0 20px;
+
+			@media (min-width: 960px) {
+				gap: 20px;
+			}
 		}
 
 		&-inner {
-			height: 40%;
-			width: 55rem;
+			height: 16rem;
+			max-width: 55rem;
+			width: 100%;
 			padding: 30px 20px;
 			border-radius: 8px;
 			background-color: rgba(255, 255, 255, 0.3);
 			backdrop-filter: blur(10px);
+
+			@media (min-width: 660px) {
+				height: 20rem;
+			}
+
+			@media (min-width: 960px) {
+				height: 23rem;
+			}
+		}
+
+		&-content {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			max-width: 600px;
+			width: 100%;
+			color: #FFF;
+		}
+
+		&-name {
+			font-size: 1.5rem;
+			font-weight: 700;
+			word-wrap: break-word;
+			text-transform: uppercase;
+
+			@media (min-width: 480px) {
+				font-size: 2.3rem;
+			}
+
+			@media (min-width: 960px) {
+				font-size: 2.7rem;
+			}
+		}
+
+		&-details {
+			display: flex;
+			align-items: center;
+
+			&>span {
+				display: block;
+				height: 35px;
+				width: 2px;
+				margin-left: 1rem;
+				margin-right: 1rem;
+				background-color: #fff;
+			}
+		}
+
+		&-release,
+		&-duration,
+		&-rating {
+			font-size: 1.2rem;
+			font-weight: 500;
+			letter-spacing: 1.5px;
+
+			@media (min-width: 480px) {
+				font-size: 1.4rem;
+			}
+
+			@media (min-width: 960px) {
+				font-size: 1.6rem;
+			}
+		}
+
+		&-release {}
+
+		&-duration {
+			&>span:nth-child(1) {
+				margin-right: 0.3rem;
+			}
+		}
+
+		&-rating {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+
+			&-number {
+				position: absolute;
+				font-size: 0.8rem;
+			}
+		}
+
+		&-description {
+			font-weight: 500;
+			line-height: 1.5;
+			font-size: 0.8rem;
+
+			@media (min-width: 480px) {
+				font-size: 0.9rem;
+			}
+
+			@media (min-width: 960px) {
+				font-size: 1.1rem;
+			}
 		}
 	}
 }
