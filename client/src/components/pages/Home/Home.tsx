@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Hero } from "./Hero";
+
 import "./Home.scss";
 
 interface IHomeProps { }
@@ -9,7 +11,7 @@ export const Home: React.FC<IHomeProps> = () => {
 		<div
 			className="home"
 		>
-			Home
+			<Hero />
 		</div>
 	);
 };
